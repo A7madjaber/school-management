@@ -7,7 +7,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="title">{{trans('Parent_trans.Email')}}</label>
-                        <input type="email" wire:model="Email"  class="form-control">
+                        <input type="email" wire:model="Email" class="form-control">
                         @error('Email')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -84,7 +84,7 @@
                     <div class="form-group col-md-6">
                         <label for="inputCity">{{trans('Parent_trans.Nationality_Father_id')}}</label>
                         <select class="custom-select my-1 mr-sm-2" wire:model="Nationality_Father_id">
-                            <option selected>{{trans('Parent_trans.Choose')}}...</option>
+                            <option disabled selected>{{trans('Parent_trans.Choose')}}...</option>
                             @foreach($Nationalities as $National)
                                 <option value="{{$National->id}}">{{$National->Name}}</option>
                             @endforeach
@@ -96,7 +96,7 @@
                     <div class="form-group col">
                         <label for="inputState">{{trans('Parent_trans.Blood_Type_Father_id')}}</label>
                         <select class="custom-select my-1 mr-sm-2" wire:model="Blood_Type_Father_id">
-                            <option selected>{{trans('Parent_trans.Choose')}}...</option>
+                            <option disabled selected>{{trans('Parent_trans.Choose')}}...</option>
                             @foreach($Type_Bloods as $Type_Blood)
                                 <option value="{{$Type_Blood->id}}">{{$Type_Blood->Name}}</option>
                             @endforeach
@@ -108,7 +108,7 @@
                     <div class="form-group col">
                         <label for="inputZip">{{trans('Parent_trans.Religion_Father_id')}}</label>
                         <select class="custom-select my-1 mr-sm-2" wire:model="Religion_Father_id">
-                            <option selected>{{trans('Parent_trans.Choose')}}...</option>
+                            <option disabled selected>{{trans('Parent_trans.Choose')}}...</option>
                             @foreach($Religions as $Religion)
                                 <option value="{{$Religion->id}}">{{$Religion->Name}}</option>
                             @endforeach

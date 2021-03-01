@@ -6,8 +6,15 @@
         </div>
     @endif
 
+        @if ($catchError)
+            <div class="alert alert-danger" id="success-danger">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                {{ $catchError }}
+            </div>
+        @endif
 
-    <div class="stepwizard">
+
+        <div class="stepwizard">
         <div class="stepwizard-row setup-panel">
             <div class="stepwizard-step">
                 <a href="#step-1" type="button"
@@ -39,13 +46,14 @@
             <div style="display: none" class="row setup-content" id="step-3">
                 @endif
 
-                <div class="col-xs-12">
+                <div class="col-xs-12" style="text-align:center;">
                     <div class="col-md-12 text-center">
-                        <div class="col justify-content-center">
+                        <div class="col justify-content-center" >
 
                             <h3 class="m-5">{{trans('Parent_trans.save')}}</h3><br>
                             <button class="btn btn-danger  nextBtn " type="button"
                                     wire:click="back(2)">{{ trans('Parent_trans.Back') }}</button>
+
                             <button class="btn btn-success nextBtn " wire:click="submitForm"
                                     type="button">{{ trans('Parent_trans.Finish') }}</button>
 
@@ -57,6 +65,4 @@
 
             </div>
     </div>
-</div>
-</div>
 </div>

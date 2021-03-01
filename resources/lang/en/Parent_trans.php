@@ -19,6 +19,18 @@ return [
     'Religion_Father_id' => 'Religion',
     'Address_Father' => 'Address Father',
 
+
+    //معلومات الام
+    'Name_Mother' => 'Mother Name Arabic',
+    'Name_Mother_en' => 'Mother Name English',
+    'Job_Mother' => 'Mother Name Arabic',
+    'Job_Mother_en' => 'Job Title English',
+    'National_ID_Mother' => 'Identification Number',
+    'Passport_ID_Mother' => 'Identification Number',
+    'Phone_Mother' => 'Telephone Number',
+    'Address_Mother' => 'Address Mother',
+
+
     'Next' => 'Next',
     'Back' => 'Back',
     'Choose' => 'Choose',
