@@ -12,7 +12,7 @@
     <!-- Title -->
 
 
-    <title>{{trans('main_trans.site-name')}} | {{@$title}}</title>
+    <title>{{trans('main_trans.Main_title')}} | {{@$title}}</title>
 
     @include('admin.layouts.head')
 </head>

@@ -3,17 +3,20 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
+Route::POST('livewire/message/{name}', '\Livewire\Controllers\HttpConnectionHandler');
 
 Route::group(
     ['prefix' =>LaravelLocalization::setLocale(),'middleware' =>
         [ 'localeSessionRedirect', 'localizationRedirect','localeViewPath','auth' ]],function(){
 
-        ////////////Admin//////////////////
+
+    ////////////Admin//////////////////
         Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
             Route::get('/', 'HomeController@index')->name('home');
 
 
-         ///////////////////////////Grades////////////////////
+
+            ///////////////////////////Grades////////////////////
             Route::group(['as'=>'grades.','prefix'=>'grades','namespace'=>'Grades'],function (){
                 Route::get('/', 'GradeController@index')->name('index');
                 Route::post('store', 'GradeController@store')->name('store');
@@ -42,8 +45,12 @@ Route::group(
 
 
 
+            Route::group(['as'=>'parent.','prefix'=>'parent'],function (){
+                Route::view('/', 'livewire.show_form')->name('create');
 
 
+
+            });
 
         });
 

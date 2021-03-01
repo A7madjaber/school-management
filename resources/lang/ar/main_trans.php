@@ -1,10 +1,10 @@
 <?php
 
 return [
-'site-name'=>'المدارس',
+
     'Dashboard'=>'الرئيسية',
     'Dashboard_page'=>'لوحة التحكم',
-    'Main_title'=>'برنامج  لادارة المدارس',
+    'Main_title'=>' لادارة المدارس',
     'Programname' => 'برنامج  لادارة المدارس',
     'change_language'=>'تغير اللغة',
     'Grades'=>'المراحل الدراسية',
@@ -12,9 +12,12 @@ return [
     'classes'=>'الصفوف',
     'List_classes'=>'قائمة الصفوف الدراسية',
     'sections'=>'الاقسام',
+    'List_sections'=>'قائمة الاقسام الدراسية',
     'students'=>'الطلاب',
     'Teachers'=>'المعلمين',
     'Parents'=>'اولياء الامور',
+    'List_Parents'=>'قائمة اولياء الامور',
+    'Add_Parent'=>'اضافة ولي امر',
     'Accounts'=>'الحسابات',
     'Attendance'=>'الحضور والغياب',
     'Exams'=>'الامتحانات',

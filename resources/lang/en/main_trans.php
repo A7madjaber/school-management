@@ -4,7 +4,7 @@ return [
 
     'Dashboard'=>'Dashboard',
     'Dashboard_page'=>'Dashboard',
-    'site-name' => ' School  Program',
+    'Main_title' => ' School Management ',
     'Programname' => ' School Management Program',
     'change_language'=>'language',
     'Grades'=>'Grades',
@@ -29,7 +29,5 @@ return [
     'Onlineclasses'=>'Online classes',
     'Settings'=>'Settings',
     'Users'=>'Users',
-    'Copyright' => 'Copyright',
-
 
 ];
