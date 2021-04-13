@@ -29,8 +29,10 @@ return [
     'Passport_ID_Mother' => 'Identification Number',
     'Phone_Mother' => 'Telephone Number',
     'Address_Mother' => 'Address Mother',
+    'Processes'=>'Action',
+    'add_parent'=>'Add Parent',
 
-
+'Attachments'=>'Attachments',
     'Next' => 'Next',
     'Back' => 'Back',
     'Choose' => 'Choose',

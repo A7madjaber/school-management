@@ -4,7 +4,7 @@ return [
 
     'Dashboard'=>'الرئيسية',
     'Dashboard_page'=>'لوحة التحكم',
-    'Main_title'=>' لادارة المدارس',
+    'Main_title'=>' ادارة المدارس',
     'Programname' => 'برنامج  لادارة المدارس',
     'change_language'=>'تغير اللغة',
     'Grades'=>'المراحل الدراسية',
@@ -15,6 +15,7 @@ return [
     'List_sections'=>'قائمة الاقسام الدراسية',
     'students'=>'الطلاب',
     'Teachers'=>'المعلمين',
+    'list_Teachers'=>'قائمة المعلمين',
     'Parents'=>'اولياء الامور',
     'List_Parents'=>'قائمة اولياء الامور',
     'Add_Parent'=>'اضافة ولي امر',
@@ -25,6 +26,7 @@ return [
     'Onlineclasses'=>'حصص اونلاين',
     'Settings'=>'الاعدادات',
     'Users'=>'المستخدمين',
+
 
 
 ];

@@ -113,6 +113,7 @@
                 </div>
 
                 <div class="text-center">
+
                     <button class="btn btn-danger  nextBtn " type="button" wire:click="back(1)">
                         {{trans('Parent_trans.Back')}}
                     </button>

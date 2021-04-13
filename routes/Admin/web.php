@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
-Route::POST('livewire/message/{name}', '\Livewire\Controllers\HttpConnectionHandler');
 
 Route::group(
     ['prefix' =>LaravelLocalization::setLocale(),'middleware' =>
@@ -13,8 +12,6 @@ Route::group(
     ////////////Admin//////////////////
         Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
             Route::get('/', 'HomeController@index')->name('home');
-
-
 
             ///////////////////////////Grades////////////////////
             Route::group(['as'=>'grades.','prefix'=>'grades','namespace'=>'Grades'],function (){
@@ -43,15 +40,27 @@ Route::group(
 
             });
 
-
-
             Route::group(['as'=>'parent.','prefix'=>'parent'],function (){
-                Route::view('/', 'livewire.show_form')->name('create');
+                Route::view('/', 'admin.livewire.parent.show_form')->name('list');
 
-
+                Route::post('delete','Parent\ParentController@destroy')->name('delete');
 
             });
 
+
+
+            Route::group(['prefix'=>'teacher','namespace'=>'teacher'],function (){
+
+                Route::post('delete', 'TeacherController@destroy')->name('teacher.delete');
+                Route::resource('teacher','TeacherController');
+
+
+
+//                Route::get('/', 'TeacherController@index')->name('index');
+//                Route::post('store', 'SectionController@store')->name('store');
+//                Route::PATCH('update', 'SectionController@update')->name('update');
+
+            });
         });
 
     });

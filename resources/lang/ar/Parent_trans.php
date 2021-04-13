@@ -29,7 +29,10 @@ return [
     'Passport_ID_Mother' => 'رقم جواز السفر',
     'Phone_Mother' => 'رقم الهاتف',
     'Address_Mother' => 'عنوان الام',
+    'Processes'=>'عمليات',
+    'add_parent'=>'اضافة ولي أمر',
 
+    'Attachments'=>'المرفقات',
     'Next' => 'التالي',
     'Back' => 'السابق',
     'Finish' => 'تاكيد',

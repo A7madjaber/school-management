@@ -22,6 +22,7 @@ return [
     'Parents'=>'Parents',
     'Add_Parent'=>'Add Parent',
     'List_Parents'=>'List Parents',
+    'list_Teachers'=>'list Teachers',
     'Accounts'=>'Accounts',
     'Attendance'=>'Attendance',
     'Exams'=>'Exams',
