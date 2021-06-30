@@ -10,7 +10,7 @@ class CreateClassroomsTable extends Migration {
 	{
 		Schema::create('classrooms', function(Blueprint $table) {
 			$table->id();
-			$table->string('name', 50);
+			$table->string('name');
 			$table->bigInteger('grade_id')->unsigned();
 			$table->timestamps();
             $table->foreign('grade_id')->references('id')->on('grades')

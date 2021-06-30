@@ -16,6 +16,9 @@ return [
     'students'=>'الطلاب',
     'Teachers'=>'المعلمين',
     'list_Teachers'=>'قائمة المعلمين',
+    'Add_student'=>'اضافة طالب',
+
+    'list_Students'=>'قائمة الطلاب',
     'Parents'=>'اولياء الامور',
     'List_Parents'=>'قائمة اولياء الامور',
     'Add_Parent'=>'اضافة ولي امر',

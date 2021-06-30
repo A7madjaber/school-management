@@ -22,7 +22,9 @@ return [
     'Parents'=>'Parents',
     'Add_Parent'=>'Add Parent',
     'List_Parents'=>'List Parents',
-    'list_Teachers'=>'list Teachers',
+    'list_Teachers'=>'List Teachers',
+    'list_Students'=>'List Students',
+
     'Accounts'=>'Accounts',
     'Attendance'=>'Attendance',
     'Exams'=>'Exams',

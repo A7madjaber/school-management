@@ -7,34 +7,31 @@ use App\Http\Requests\StoreSections;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
     public function index(){
+        $teachers=Teacher::all();
+        $grades=Grade::all();
+        return view('admin.sections.index',compact('grades','teachers'));
+    }
 
-       $grades=Grade::all();
-        return view('admin.sections.index',compact('grades'));
-    }
-    public function classrooms($id){
-        $classes=Classroom::where('grade_id',$id)->pluck("name","id");
-        return $classes;
-    }
 
     public function store(StoreSections  $request)
     {
 
         try {
 
-            Section::create([
+          $section=  Section::create([
                 'name' => ['en' => $request->Name_Section_En, 'ar' => $request->Name_Section_Ar],
                 'grade_id'=>$request->Grade_id,
                 'class_id'=> $request->Class_id,
 
             ]);
 
-
-
+            $section->teachers()->attach($request->teacher_id);
             return redirect()->back()->with(['message' => trans('messages.success'), 'alert-type' => 'success']);
 
         }
@@ -61,7 +58,12 @@ class SectionController extends Controller
             ]);
 
 
-            return redirect()->route('Sections.index');
+            if (isset($request->teacher_id)){
+                $section->teachers()->sync($request->teacher_id);
+
+            }
+
+            return redirect()->route('admin.section.index')->with(['message' => trans('messages.success'), 'alert-type' => 'success']);
         }
         catch
         (\Exception $e) {

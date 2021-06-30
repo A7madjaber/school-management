@@ -11,7 +11,7 @@ class CreateGradesTable extends Migration {
 			$table->id();
 			$table->timestamps();
 			$table->string('name');
-			$table->text('notes');
+			$table->text('notes')->nullable();
 		});
 	}
 

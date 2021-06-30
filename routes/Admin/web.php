@@ -4,12 +4,17 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::POST('livewire/message/{name}', '\Livewire\Controllers\HttpConnectionHandler');
+
 Route::group(
     ['prefix' =>LaravelLocalization::setLocale(),'middleware' =>
         [ 'localeSessionRedirect', 'localizationRedirect','localeViewPath','auth' ]],function(){
 
 
     ////////////Admin//////////////////
+        Route::get('admin/get/classes/{id}', 'HomeController@classrooms');
+        Route::get('admin/get/sections/{id}', 'HomeController@sections');
+
         Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
             Route::get('/', 'HomeController@index')->name('home');
 
@@ -36,7 +41,7 @@ Route::group(
                 Route::post('store', 'SectionController@store')->name('store');
                 Route::PATCH('update', 'SectionController@update')->name('update');
                 Route::post('delete', 'SectionController@destroy')->name('delete');
-                Route::get('classes/{id}', 'SectionController@classrooms');
+
 
             });
 
@@ -55,14 +60,19 @@ Route::group(
                 Route::resource('teacher','TeacherController');
 
 
-
 //                Route::get('/', 'TeacherController@index')->name('index');
 //                Route::post('store', 'SectionController@store')->name('store');
 //                Route::PATCH('update', 'SectionController@update')->name('update');
 
             });
-        });
 
+
+
+            Route::group(['namespace'=>'student'],function (){
+                Route::resource('student','StudentController');
+            });
+        });
     });
+
 
 

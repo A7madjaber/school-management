@@ -264,7 +264,8 @@
                         swal({
 
                             title: "Are you sure to delete?",
-                            text: "Once deleted, the classes for this grade will be deleted!",                            icon: "warning",
+                            text: "Once deleted, the classes for this grade will be deleted!",
+                            icon: "warning",
                             buttons: ["cancel", "delete"],
 
                             dangerMode: true,

@@ -11,7 +11,7 @@
                 <div class="card card-statistics h-100">
                     <div class="card-body">
                         @include('admin.layouts.errors')
-                        <div class="accordion gray plus-icon round" >
+                        <div class="accordion gray plus-icon round">
                             @foreach ($grades as $grade)
                                 <div class="acd-group">
                                     <a href="#" class="acd-heading">{{ $grade->name }}</a>
@@ -61,8 +61,10 @@
                                                                                data-toggle="modal"
                                                                                data-target="#edit{{ $section->id }}">{{ trans('Sections_trans.Edit') }}</a>
 
-                                                                            <button id="delete" data-route="{{route('admin.section.delete')}}"
-                                                                                    title="{{ trans('Grades_trans.Delete') }}"data-id="{{$section->id}}"
+                                                                            <button id="delete"
+                                                                                    data-route="{{route('admin.section.delete')}}"
+                                                                                    title="{{ trans('Grades_trans.Delete') }}"
+                                                                                    data-id="{{$section->id}}"
                                                                                     class="btn btn-outline-danger btn-sm">
                                                                                 {{ trans('Sections_trans.Delete') }}
                                                                             </button>
@@ -95,10 +97,10 @@
                                                                                 <div class="modal-body">
 
                                                                                     <form
-                                                                                        action="#"
+                                                                                        action="{{route('admin.section.update',)}}"
                                                                                         method="POST">
-                                                                                        {{ method_field('patch') }}
-                                                                                        {{ csrf_field() }}
+                                                                                       @method('patch')
+                                                                                       @csrf
                                                                                         <div class="row">
                                                                                             <div class="col">
                                                                                                 <input type="text"
@@ -119,9 +121,9 @@
                                                                                                        value="{{ $section->id }}">
                                                                                             </div>
 
+
                                                                                         </div>
                                                                                         <br>
-
 
                                                                                         <div class="col">
                                                                                             <label for="inputName"
@@ -156,6 +158,19 @@
                                                                                             </select>
                                                                                         </div>
                                                                                         <br>
+                                                                                        <div class="col">
+                                                                                            <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Teacher') }}</label>
+                                                                                            <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect2">
+                                                                                                @foreach($section->teachers as $teacher)
+                                                                                                    <option selected value="{{$teacher['id']}}">{{$teacher['Name']}}</option>
+                                                                                                @endforeach
+
+                                                                                                @foreach($teachers as $teacher)
+                                                                                                    <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <br>
 
                                                                                         <div class="col">
                                                                                             <div class="form-check">
@@ -178,21 +193,21 @@
                                                                                                     class="form-check-label"
                                                                                                     for="exampleCheck1">{{ trans('Sections_trans.Status') }}</label>
                                                                                             </div>
+                                                                                            <br>
                                                                                         </div>
 
 
-
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-dismiss="modal">{{ trans('Sections_trans.Close') }}</button>
-                                                                                    <button type="submit"
-                                                                                            class="btn btn-danger">{{ trans('Sections_trans.submit') }}</button>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button"
+                                                                                                    class="btn btn-secondary"
+                                                                                                    data-dismiss="modal">{{ trans('Sections_trans.Close') }}</button>
+                                                                                            <button type="submit"
+                                                                                                    class="btn btn-danger">{{ trans('Sections_trans.submit') }}</button>
+                                                                                        </div>
+                                                                                    </form>
                                                                                 </div>
-                                                                                </form>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
 
 
 
@@ -227,7 +242,7 @@
                                 <div class="modal-body">
 
                                     <form action="{{route('admin.section.store')}}" method="POST">
-                                      @csrf
+                                        @csrf
                                         <div class="row">
                                             <div class="col">
                                                 <input type="text" name="Name_Section_Ar" class="form-control"
@@ -268,24 +283,42 @@
                                             </select>
                                         </div>
 
+                                        <br>
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">{{ trans('Sections_trans.Close') }}</button>
-                                    <button type="submit"
-                                            class="btn btn-success">{{ trans('Sections_trans.submit') }}</button>
+                                        <div class="col">
+                                            <label for="inputName"
+                                                   class="control-label">{{ trans('Teacher_trans.Add_Teacher') }}</label>
+                                            <select name="teacher_id[]" class="custom-select" multiple
+                                                    onchange="console.log($(this).val())">
+                                                <!--placeholder-->
+                                                <option value="" selected
+                                                        disabled>{{ trans('Sections_trans.Select_Grade') }}
+                                                </option>
+                                                @foreach ($teachers as $teacher)
+                                                    <option value="{{ $teacher->id }}"> {{ $teacher->Name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">{{ trans('Sections_trans.Close') }}</button>
+                                            <button type="submit"
+                                                    class="btn btn-success">{{ trans('Sections_trans.submit') }}</button>
+                                        </div>
+
+                                    </form>
                                 </div>
-
-                                </form>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-        @push('js')
+            @push('js')
 
                 <script src="{{asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 
@@ -293,11 +326,11 @@
                 @if (App::getLocale() == 'ar')
                     <script>
 
-                        $(document).on("click", "#delete", function(e){
+                        $(document).on("click", "#delete", function (e) {
 
                             e.preventDefault();
-                            var id =  $(this).attr('data-id');
-                            var route =  $(this).attr('data-route');
+                            var id = $(this).attr('data-id');
+                            var route = $(this).attr('data-route');
 
 
                             swal({
@@ -316,18 +349,17 @@
                                         $.ajax({
                                             data: {
                                                 "_token": "{{ csrf_token() }}",
-                                                'id' :id,
+                                                'id': id,
                                             },
                                             url: route,
                                             type: "post",
                                             dataType: "JSON",
-                                            success : function(data)
-                                            {
+                                            success: function (data) {
                                                 swal({
 
                                                     text: data.message,
                                                     icon: "success",
-                                                    buttons:  "موافق",
+                                                    buttons: "موافق",
                                                 });
 
 
@@ -339,7 +371,7 @@
 
                                             title: "لم يتم الحذف",
                                             icon: "info",
-                                            buttons:  "موافق",
+                                            buttons: "موافق",
                                         })
                                     }
                                 });
@@ -350,11 +382,11 @@
 
                     <script>
 
-                        $(document).on("click", "#delete", function(e){
+                        $(document).on("click", "#delete", function (e) {
 
                             e.preventDefault();
-                            var id =  $(this).attr('data-id');
-                            var route =  $(this).attr('data-route');
+                            var id = $(this).attr('data-id');
+                            var route = $(this).attr('data-route');
 
 
                             swal({
@@ -373,20 +405,18 @@
                                         $.ajax({
                                             data: {
                                                 "_token": "{{ csrf_token() }}",
-                                                'id' :id,
+                                                'id': id,
                                             },
                                             url: route,
                                             type: "post",
                                             dataType: "JSON",
-                                            success : function(data)
-                                            {
+                                            success: function (data) {
                                                 swal({
 
                                                     text: data.message,
                                                     icon: "success",
-                                                    buttons:  "ok",
+                                                    buttons: "ok",
                                                 });
-
 
 
                                             },
@@ -397,7 +427,7 @@
 
                                             title: "Not deleted",
                                             icon: "info",
-                                            buttons:  "ok",
+                                            buttons: "ok",
                                         })
                                     }
                                 });
@@ -407,33 +437,57 @@
 
 
                 <script>
-                $(document).ready(function () {
-                    $('select[name="Grade_id"]').on('change', function () {
-                        var Grade_id = $(this).val();
-                        if (Grade_id) {
-                            $.ajax({
-                                url: "{{ URL::to('admin/section/classes') }}/" + Grade_id,
-                                type: "GET",
-                                dataType: "json",
-                                success: function (data) {
-                                    $('select[name="Class_id"]').empty();
-                                    $.each(data, function (key, value) {
-                                        $('select[name="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
-                                    });
-                                },
-                            });
-                        } else {
-                            console.log('AJAX load did not work');
-                        }
+                    $(document).ready(function () {
+                        $('select[name="Grade_id"]').on('change', function () {
+                            var Grade_id = $(this).val();
+                            if (Grade_id) {
+                                $.ajax({
+                                    url: "{{ URL::to('admin/get/classes') }}/" + Grade_id,
+                                    type: "GET",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        $('select[name="Class_id"]').empty();
+                                        $.each(data, function (key, value) {
+                                            $('select[name="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
+                                        });
+                                    },
+                                });
+                            } else {
+                                console.log('AJAX load did not work');
+                            }
+                        });
                     });
-                });
 
-            </script>
+                </script>
+
+                <script>
+                    $(document).ready(function () {
+                        $('select[name="Classroom_id"]').on('change', function () {
+                            var Classroom_id = $(this).val();
+                            if (Classroom_id) {
+                                $.ajax({
+                                    url: "{{ URL::to('admin/get/sections') }}/" + Classroom_id,
+                                    type: "GET",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        $('select[name="section_id"]').empty();
+                                        $.each(data, function (key, value) {
+                                            $('select[name="section_id"]').append('<option value="' + key + '">' + value + '</option>');
+                                        });
+                                    },
+                                });
+                            }
+                            else {
+                                console.log('AJAX load did not work');
+                            }
+                        });
+                    });
+                </script>
 
 
 
 
         @endpush
         <!-- row closed -->
-        @endsection
+@endsection
 

@@ -19,4 +19,8 @@ public function specializations(){
     return $this->belongsTo(Specialization::class,'Specialization_id');
 }
 
+public function sections(){
+    return $this->belongsToMany(Section::class,'teacher_section');
+}
+
 }
